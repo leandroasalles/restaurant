@@ -1,0 +1,8 @@
+{
+    "burguers":[
+        {"id": 1, "name": "Duplo Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
+        {"id": 2, "name": "X Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
+        {"id": 3, "name": "Pimenta Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
+        {"id": 4, "name": "Kids Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"}
+    ]
+}
