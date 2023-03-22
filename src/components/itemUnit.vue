@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="item--container">
-      <img class="item--image" src="../assets/icons/burguer.png" />
+      <img class="item--image" :src="imagePath" />
     </div>
     <div class="item--content">
       <h2 class="item--name">{{ item.name }}</h2>
@@ -26,6 +26,17 @@ export default {
   props: {
     item: {},
   },
+
+  computed:{
+    selectedCategory: {
+      get() {
+        return this.$store.state.selectedCategory;
+      },
+    },
+    imagePath(){
+      return require (`../assets/images/${this.selectedCategory}/${this.item.id}.png`)
+    }
+  }
 };
 </script>
 

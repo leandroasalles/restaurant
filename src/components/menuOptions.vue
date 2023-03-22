@@ -15,30 +15,30 @@
 </template>
 
 <script>
-import burguer from "../assets/icons/food.svg";
-import fries from "../assets/icons/fries.svg";
-import iceCream from "../assets/icons/iceCream.svg";
 import pizza from "../assets/icons/pizza.svg";
-import smothie from "../assets/icons/smothie.svg";
+import drinks from "../assets/icons/drinks.svg";
+import deserts from "../assets/icons/deserts.svg";
+import combo from "../assets/icons/combo.svg";
+import burguer from "../assets/icons/food.svg";
 import store from "../store/store.js";
 
 export default {
   name: "menuOptions",
   components: {
-    burguer,
-    fries,
-    iceCream,
     pizza,
-    smothie,
+    drinks,
+    deserts,
+    combo,
+    burguer,
     store,
   },
   data() {
     return {
       options: [
-        { label: "Pizza", icon: "pizza", id: "Pizza" },
-        { label: "Bebidas", icon: "smothie", id: "Smothie" },
-        { label: "Sobremesas", icon: "iceCream", id: "Ice Cream" },
-        { label: "Combos", icon: "fries", id: "Fries" },
+        { label: "Pizza", icon: "pizza", id: "pizza" },
+        { label: "Bebidas", icon: "drinks", id: "drinks" },
+        { label: "Sobremesas", icon: "deserts", id: "deserts" },
+        { label: "Combos", icon: "combo", id: "combo" },
         { label: "Burguers", icon: "burguer", id: "burguers" },
       ],
       selectedCategory: "",
@@ -46,7 +46,7 @@ export default {
   },
 
   mounted() {
-    this.categoryClick("Pizza");
+    this.categoryClick("pizza");
   },
 
   methods: {
@@ -125,7 +125,7 @@ export default {
       justify-content: center;
 
       li {
-        min-width: 79px;
+        min-width: 100px;
       }
     }
   }

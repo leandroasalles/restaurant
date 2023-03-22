@@ -38,7 +38,7 @@ export default {
             this.itemsList = response.data;
             this.loading = false
           });
-      },3000)
+      },1000)
     },
   },
 
@@ -78,7 +78,10 @@ export default {
     @media @tablet {
       flex-direction: column;
       margin: 20px;
+      width: unset;
     }
+
+
   }
 }
 </style>
