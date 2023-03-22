@@ -1,28 +1,36 @@
 <template>
   <div class="item">
-    <div class="container">
-      <img class="item--image" src="../assets/burguer.png">
+    <div class="item--container">
+      <img class="item--image" src="../assets/icons/burguer.png" />
     </div>
-    <div class="content">
-      <h2 class="item--name">{{item.name}}</h2>
-      <p class="item--description">{{item.description}}</p>
-      <p class="item--price">{{item.price}}</p>
+    <div class="item--content">
+      <h2 class="item--name">{{ item.name }}</h2>
+      <p class="item--description">{{ item.description }}</p>
+      <p class="item--price">{{ item.price | currency }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: "itemUnit",
-    props: {
-        item: {}
-    }
+  name: "itemUnit",
+  filters: {
+    currency(value) {
+      return `R$ ${value.toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL",
+      })}`;
+    },
+  },
 
-}
+  props: {
+    item: {},
+  },
+};
 </script>
 
 <style lang="less" scoped>
-.item{
+.item {
   width: 220px;
   height: 290px;
   background: white;
@@ -30,25 +38,29 @@ export default {
   margin: 20px;
   padding: 20px;
   text-align: left;
+  
 
-  &--image{
+  &--image {
     width: 127px;
     display: block;
     margin: 20px auto;
   }
 
-  &--name{
+  &--name {
     font-size: 18px;
+    margin: 8px 0;
   }
 
-  &--description{
+  &--description {
     font-size: 12px;
     color: @dark-grey;
+    margin: 0;
   }
 
-  &--price{
+  &--price {
     color: @yellow;
     font-size: 18px;
+    margin: 8px 0;
   }
 
   @media @tablet {
@@ -59,31 +71,32 @@ export default {
     border: 1px solid @dark-grey;
     margin: 10px auto;
     padding: 20px 10px;
+    justify-content: center;
 
-    &--image{
-      width: 80px;
-      margin: 0;
+    &--container {
+      margin-right: 8px;
+      
     }
 
-    &--name{
+    &--image {
+      width: 80px;
+      margin: auto 0;
+    }
+
+    &--name {
       margin: 0 0 10px 0;
     }
 
-    &--description{
+    &--description {
       margin: 0;
     }
 
-    &--price{
+    &--price {
       margin: 0;
       text-align: right;
     }
   }
 
-  .container{
-    margin-right: 8px;
-  }
-
-
+  
 }
-
 </style>

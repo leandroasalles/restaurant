@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import menuOptions from '../menuOptions.vue'
-import itemsList from '../itemsList.vue'
+import menuOptions from '../components/menuOptions.vue'
+import itemsList from '../components/itemsList.vue'
 
 export default {
     name: "homeView",
