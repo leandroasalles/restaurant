@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" @click="addToCart">
     <div class="item--container">
       <img class="item--image" :src="imagePath" />
     </div>
@@ -27,16 +27,16 @@ export default {
     item: {},
   },
 
-  computed:{
-    selectedCategory: {
-      get() {
-        return this.$store.state.selectedCategory;
-      },
+  computed: {
+    imagePath() {
+      return require(`../assets/images/${this.item.id}.png`);
     },
-    imagePath(){
-      return require (`../assets/images/${this.selectedCategory}/${this.item.id}.png`)
-    }
-  }
+  },
+  methods: {
+    addToCart() {
+      this.$store.dispatch("addToCart", this.item);
+    },
+  },
 };
 </script>
 
@@ -49,7 +49,6 @@ export default {
   margin: 20px;
   padding: 20px;
   text-align: left;
-  
 
   &--image {
     width: 127px;
@@ -86,7 +85,6 @@ export default {
 
     &--container {
       margin-right: 8px;
-      
     }
 
     &--image {
@@ -107,7 +105,5 @@ export default {
       text-align: right;
     }
   }
-
-  
 }
 </style>

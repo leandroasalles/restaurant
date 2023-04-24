@@ -1,22 +1,63 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    state () {
-      return {
-        selectedCategory: ""
-      }
+  state() {
+    return {
+      selectedCategory: "",
+      cartList: [],
+    };
+  },
+  mutations: {
+    changeOption(state, id) {
+      state.selectedCategory = id;
     },
-    mutations: {
-      changeOption (state, id) {
-        state.selectedCategory = id
-      }
+    addToCart(state, el) {
+      state.cartList.push({ ...el, quantity: 1 });
     },
-    actions: {
-        changeOption (context, id) {
-          context.commit('changeOption', id)
-        }
-      }
-  })
+    increaseQuantity(state, index) {
+      ++state.cartList[index].quantity;
+      console.log(state.cartList)
+    },
+    decreaseQuantity(state, index) {
+      --state.cartList[index].quantity;
+    },
+    deleteItem(state, index){
+      state.cartList.splice(index, 1)
+    }
+  },
+  actions: {
+    changeOption(context, id) {
+      context.commit("changeOption", id);
+    },
+    addToCart({ state, commit }, el) {
+      const cartItem = state.cartList.find((cartItem) => cartItem.id == el.id);
+      const cartItemIndex = state.cartList.findIndex(
+        (cartItem) => cartItem.id == el.id
+      );
+
+      cartItem
+        ? commit("increaseQuantity", cartItemIndex)
+        : commit("addToCart", el);
+    },
+    increaseQuantity({ state, commit }, el) {
+      const cartItemIndex = state.cartList.findIndex(
+        (cartItem) => cartItem.id == el.id
+      );
+
+      commit("increaseQuantity", cartItemIndex);
+    },
+    decreaseQuantity({ state, commit }, el) {
+      const cartItemIndex = state.cartList.findIndex(
+        (cartItem) => cartItem.id == el.id
+      );
+    
+
+      state.cartList[cartItemIndex].quantity == 1
+        ? commit("deleteItem", cartItemIndex)
+        : commit("decreaseQuantity", cartItemIndex);
+    },
+  },
+});

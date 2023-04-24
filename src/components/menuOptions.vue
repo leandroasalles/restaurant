@@ -66,6 +66,7 @@ export default {
 .menu {
   height: 100vh;
   width: 130px;
+  min-width: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
