@@ -26,6 +26,9 @@ export default {
       loading: true,
     };
   },
+  created() {
+    this.getItemsList()
+  },
 
   methods: {
     getItemsList() {

@@ -1,26 +1,26 @@
 {
     "pizza":[
-        {"id": "0001", "name": "Pizza de Calabresa", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
-        {"id": "0002", "name": "Pizza de Peperoni", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
-        {"id": "0003", "name": "Pizza de Frango", "description": "2 carnes, alface, tomate, bacon e cebola", "price": "22,00"}
+        {"id": "0001", "name": "Pizza de Calabresa", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22},
+        {"id": "0002", "name": "Pizza de Peperoni", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22},
+        {"id": "0003", "name": "Pizza de Frango", "description": "2 carnes, alface, tomate, bacon e cebola", "price": 22}
     ],
     "drinks":[
-        {"id": "0004", "name": "Coca Cola", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
-        {"id": "0005", "name": "Guaraná", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"}
+        {"id": "0004", "name": "Coca Cola", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22},
+        {"id": "0005", "name": "Guaraná", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22}
     ],
     "deserts":[
-        {"id": "0006", "name": "Sorvete Mista", "description": "Casquinha mista de creme e chocolate", "price": "22,00"},
-        {"id": "0007", "name": "Sorvete de Morango", "description": "Sorvete de morango na casquinha", "price": "22,00"},
-        {"id": "0008", "name": "Milkshake", "description": "Milkshake de chocolate", "price": "22,00"}
+        {"id": "0006", "name": "Sorvete Mista", "description": "Casquinha mista de creme e chocolate", "price": 22},
+        {"id": "0007", "name": "Sorvete de Morango", "description": "Sorvete de morango na casquinha", "price": 22},
+        {"id": "0008", "name": "Milkshake", "description": "Milkshake de chocolate", "price": 22}
     ],
     "combo":[
-        {"id": "0009", "name": "Pizza número 1", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
-        {"id": "0010", "name": "quarto teste", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"}
+        {"id": "0009", "name": "Pizza número 1", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22},
+        {"id": "0010", "name": "quarto teste", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22}
     ],
     "burguers":[
-        {"id": "0011", "name": "Duplo Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
-        {"id": "0012", "name": "X Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
-        {"id": "0013", "name": "Pimenta Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"},
-        {"id": "0014", "name": "Kids Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": "22,00"}
+        {"id": "0011", "name": "Duplo Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22},
+        {"id": "0012", "name": "X Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22},
+        {"id": "0013", "name": "Pimenta Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22},
+        {"id": "0014", "name": "Kids Burguer", "description": "Pão, maionese, 2 carnes, alface, tomate, bacon e cebola", "price": 22}
     ]
 }

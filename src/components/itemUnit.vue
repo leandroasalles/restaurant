@@ -6,7 +6,7 @@
     <div class="item--content">
       <h2 class="item--name">{{ item.name }}</h2>
       <p class="item--description">{{ item.description }}</p>
-      <p class="item--price">{{ item.price | currency }}</p>
+      <p class="item--price">{{item.price | currency}}</p>
     </div>
   </div>
 </template>
@@ -16,10 +16,7 @@ export default {
   name: "itemUnit",
   filters: {
     currency(value) {
-      return `R$ ${value.toLocaleString("pt-br", {
-        style: "currency",
-        currency: "BRL",
-      })}`;
+      return `R$ ${value.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
     },
   },
 
@@ -85,6 +82,7 @@ export default {
 
     &--container {
       margin-right: 8px;
+      min-width: 80px;
     }
 
     &--image {

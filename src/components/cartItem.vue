@@ -1,7 +1,8 @@
 <template>
   <div class="item">
     <div class="item--quantity">
-      <button class="buttons" @click="decreaseQuantity" :disabled='item.quantity == 1'>-</button>
+      <trash class="trash" v-if="item.quantity == 1" @click="decreaseQuantity()"/>
+      <button class="buttons" @click="decreaseQuantity" v-else >-</button>
       <span class="quantity">{{item.quantity}}</span>
       <button class="buttons" @click="increaseQuantity">+</button>
     </div>
@@ -17,14 +18,19 @@
       <a class="item--observation">Adicionar observação</a>
     </div>
     <div class="item--price">
-      {{ item.price | currency }}
+      {{ item.price | currency}}
     </div>
   </div>
 </template>
 
 <script>
+import trash from "../assets/icons/trash.svg"
+
 export default {
   name: "cartItem",
+  components:{
+    trash,
+  },
   props: {
     item: {},
   },
@@ -35,10 +41,7 @@ export default {
   },
   filters: {
     currency(value) {
-      return `R$ ${value.toLocaleString("pt-br", {
-        style: "currency",
-        currency: "BRL",
-      })}`;
+      return `R$ ${value.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
     },
   },
   methods:{
@@ -55,8 +58,15 @@ export default {
 <style scoped lang="less">
 .item {
   display: flex;
+  align-items: center;
   border-bottom: solid 1px @light-grey;
   padding: 20px 0;
+
+  .trash{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
 
   &--quantity{
     display: flex;
@@ -119,6 +129,30 @@ export default {
     font-weight: 600;
     font-size: 18px;
     color: @yellow;
+  }
+
+  @media @tablet{
+    flex-wrap: wrap;
+
+    &--img{
+      order: 1;
+    }
+
+    &--content{
+      order: 2;
+    }
+
+    &--quantity{
+      order: 3;
+      padding: 0;
+      width: 80px;
+      justify-content: center;
+    }
+
+    &--price {
+      order: 4;
+      padding: 0 20px;
+    }
   }
 }
 </style>
