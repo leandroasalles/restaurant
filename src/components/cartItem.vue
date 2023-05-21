@@ -1,11 +1,6 @@
 <template>
   <div class="item">
-    <div class="item--quantity">
-      <trash class="trash" v-if="item.quantity == 1" @click="decreaseQuantity()"/>
-      <button class="buttons" @click="decreaseQuantity" v-else >-</button>
-      <span class="quantity">{{item.quantity}}</span>
-      <button class="buttons" @click="increaseQuantity">+</button>
-    </div>
+    <quantity :item="item"/>
     <div class="item--img-container">
       <div class="item--img">
         <img :src="imagePath" />
@@ -24,12 +19,12 @@
 </template>
 
 <script>
-import trash from "../assets/icons/trash.svg"
+import quantity from '../components/quantity.vue'
 
 export default {
   name: "cartItem",
   components:{
-    trash,
+    quantity,
   },
   props: {
     item: {},
@@ -44,14 +39,7 @@ export default {
       return `R$ ${value.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
     },
   },
-  methods:{
-    increaseQuantity(){
-      this.$store.dispatch("increaseQuantity", this.item)
-    },
-    decreaseQuantity(){
-      this.$store.dispatch("decreaseQuantity", this.item)
-    }
-  }
+
 };
 </script>
 
@@ -61,33 +49,6 @@ export default {
   align-items: center;
   border-bottom: solid 1px @light-grey;
   padding: 20px 0;
-
-  .trash{
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-
-  &--quantity{
-    display: flex;
-    align-items: center;
-    padding-right: 37px;
-
-    .buttons{
-      font-weight: 600;
-      font-size: 18px;
-      cursor: pointer;
-      background: none;
-      border: 0;
-    }
-    .quantity{
-      font-weight: 500;
-      font-size: 18px;
-      color: @yellow;
-      width: 28px;
-      text-align: center;
-    }
-  }
 
   &--img-container {
     width: 80px;

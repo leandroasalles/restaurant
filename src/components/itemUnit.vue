@@ -54,6 +54,7 @@ export default {
   margin: 20px;
   padding: 20px;
   text-align: left;
+  cursor: pointer;
 
   &--image {
     width: 127px;
