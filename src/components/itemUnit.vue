@@ -1,5 +1,5 @@
 <template>
-  <div class="item" @click="addToCart">
+  <div class="item" @click="addToCart" :item="item">
     <div class="item--container">
       <img class="item--image" :src="imagePath" />
     </div>
@@ -12,10 +12,14 @@
 </template>
 
 <script>
+import mixin from '../mixins/mixin.js'
+
 export default {
   name: "itemUnit",
+  mixins: [mixin],
   filters: {
     currency(value) {
+      if(!value) return
       return `R$ ${value.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
     },
   },
@@ -26,12 +30,16 @@ export default {
 
   computed: {
     imagePath() {
+      if(!this.item?.id) return
       return require(`../assets/images/${this.item.id}.png`);
     },
   },
   methods: {
     addToCart() {
       this.$store.dispatch("addToCart", this.item);
+      if(this.isDesktop()) return
+
+      this.$router.push({ name: 'addToCart', params: { id: this.item.id } })
     },
   },
 };
@@ -53,6 +61,13 @@ export default {
     margin: 20px auto;
   }
 
+  &--content{
+    display: flex;
+    flex-direction: column;
+    height: 140px;
+    min-height: 140px;
+  }
+
   &--name {
     font-size: 18px;
     margin: 8px 0;
@@ -68,6 +83,9 @@ export default {
     color: @yellow;
     font-size: 18px;
     margin: 8px 0;
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-end;
   }
 
   @media @tablet {
@@ -90,6 +108,13 @@ export default {
       margin: auto 0;
     }
 
+    &--content{
+      display: block;
+      height: unset;
+      min-height: unset;
+      flex-grow: 1;
+    }
+
     &--name {
       margin: 0 0 10px 0;
     }
@@ -100,7 +125,7 @@ export default {
 
     &--price {
       margin: 0;
-      text-align: right;
+      justify-content: flex-end;
     }
   }
 }
