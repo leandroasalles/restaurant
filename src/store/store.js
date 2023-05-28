@@ -52,11 +52,12 @@ export const store = new Vuex.Store({
       const cartItemIndex = state.cartList.findIndex(
         (cartItem) => cartItem.id == el.id
       );
-    
+        
+      commit("decreaseQuantity", cartItemIndex);
 
-      state.cartList[cartItemIndex].quantity == 1
-        ? commit("deleteItem", cartItemIndex)
-        : commit("decreaseQuantity", cartItemIndex);
+      // state.cartList[cartItemIndex].quantity == 1
+      //   ? commit("deleteItem", cartItemIndex)
+      //   : commit("decreaseQuantity", cartItemIndex);
     },
   },
   getters: {

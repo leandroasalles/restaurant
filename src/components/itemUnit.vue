@@ -94,7 +94,7 @@ export default {
     width: 100%;
     height: fit-content;
     margin: 0;
-    border: 1px solid @dark-grey;
+    border: 1px solid @light-grey;
     margin: 10px auto;
     padding: 20px 10px;
     justify-content: center;

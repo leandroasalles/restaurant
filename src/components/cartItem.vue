@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <quantity :item="item"/>
+    <quantity :item="item" />
     <div class="item--img-container">
       <div class="item--img">
         <img :src="imagePath" />
@@ -13,17 +13,17 @@
       <a class="item--observation">Adicionar observação</a>
     </div>
     <div class="item--price">
-      {{ item.price | currency}}
+      {{ item.price | currency }}
     </div>
   </div>
 </template>
 
 <script>
-import quantity from '../components/quantity.vue'
+import quantity from "../components/quantity.vue";
 
 export default {
   name: "cartItem",
-  components:{
+  components: {
     quantity,
   },
   props: {
@@ -36,10 +36,11 @@ export default {
   },
   filters: {
     currency(value) {
-      return `R$ ${value.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+      return `R$ ${value.toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+      })}`;
     },
   },
-
 };
 </script>
 
@@ -69,7 +70,7 @@ export default {
     }
   }
 
-  &--content{
+  &--content {
     flex-grow: 1;
     padding: 0 20px;
   }
@@ -92,18 +93,18 @@ export default {
     color: @yellow;
   }
 
-  @media @tablet{
+  @media @tablet {
     flex-wrap: wrap;
 
-    &--img{
+    &--img {
       order: 1;
     }
 
-    &--content{
+    &--content {
       order: 2;
     }
 
-    &--quantity{
+    &--quantity {
       order: 3;
       padding: 0;
       width: 80px;
