@@ -1,20 +1,25 @@
 <template>
   <div class="add-cart">
-    <router-link class="add-cart--go-back" to="/" v-if="isSmallScreens()"
-      >Voltar</router-link
-    >
-    <item :item="item" />
     <div class="add-cart--container">
-      <div class="add-cart--container-quantity">
-        <span>Quantidade: </span>
-        <quantity 
-        :useStore=false
-        :item="item" 
-        />
+      <router-link class="add-cart--go-back" to="/" v-if="isSmallScreens()"
+        >Voltar</router-link
+      >
+      <item :item="item" />
+      <div class="add-cart--information-container">
+        <div class="add-cart--information-container-quantity">
+          <span>Quantidade: </span>
+          <quantity :useStore="false" :item="item" />
+        </div>
+        <p>Observações:</p>
+        <textarea
+          class="add-cart--information-container-observations"
+          rows="10"
+        ></textarea>
       </div>
-      <p>Observações:</p>
-      <textarea class="add-cart--container-observations" rows="10"></textarea>
     </div>
+
+    <div class="add-cart--button" @click="addToCartBtn">Adicionar ao carrinho</div>
+
   </div>
 </template>
 
@@ -49,9 +54,14 @@ export default {
       axios
         .get(`http://localhost:3000/${this.selectedCategory}/${this.id}`)
         .then((response) => {
-          this.item = {quantity: 1, ...response.data};
+          this.item = { quantity: 1, ...response.data };
           this.loading = false;
         });
+    },
+
+    addToCartBtn(){
+      this.$store.dispatch("addToCart", this.item);
+      this.$router.push({ name: 'home'})
     },
   },
 
@@ -74,6 +84,10 @@ export default {
 <style lang="less" scoped>
 .add-cart {
   padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 
   &--go-back {
     font-size: 18px;
@@ -82,7 +96,7 @@ export default {
     color: black;
   }
 
-  &--container {
+  &--information-container {
     font-weight: 600;
     font-size: 16px;
 
@@ -104,6 +118,17 @@ export default {
     textarea:focus {
       outline: 0;
     }
+  }
+
+  &--button {
+    color: white;
+    background-color: red;
+    padding: 11px 0;
+    text-align: center;
+    border-radius: 8px;
+    border: 0;
+    font-size: 16px;
+    font-weight: 600;
   }
 }
 </style>

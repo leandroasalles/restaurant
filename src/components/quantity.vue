@@ -1,13 +1,32 @@
 <template>
   <div class="item-quantity">
     <!-- <trash class="item-quantity--trash" v-if="item.quantity == 1" @click="OnDecreaseQuantityClick"/> -->
-    <button class="item-quantity--buttons" @click="OnDecreaseQuantityClick" :disabled="item.quantity == 0"> - </button>
+    <button
+      class="item-quantity--buttons"
+      @click="OnDecreaseQuantityClick"
+      :disabled="item.quantity == 0"
+    >
+      -
+    </button>
     <span class="item-quantity--quantity">{{ item.quantity }}</span>
-    <button class="item-quantity--buttons" @click="OnIncreaseQuantityClick"> + </button>
+    <button class="item-quantity--buttons" @click="OnIncreaseQuantityClick">
+      +
+    </button>
+    <Modal
+      class="modal-remove"
+      :show="showModal"
+      @modal-close="showModal = false">
+      <h2>Deseja remover o item do carrinho?</h2>
+      <div class="modal-remove--btn">
+        <button class="primary-button" @click="deleteItem()">Sim</button>
+        <button class="primary-button" @click="OnIncreaseQuantityClick()">Não</button>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from "./Modal.vue";
 // import trash from "../assets/icons/trash.svg";
 // import { mapActions } from "vuex";
 
@@ -15,7 +34,7 @@ export default {
   name: "QuantityItem",
   data() {
     return {
-      
+      showModal: false,
     };
   },
   props: {
@@ -26,6 +45,7 @@ export default {
     },
   },
   components: {
+    Modal,
     // trash,
   },
   methods: {
@@ -34,40 +54,29 @@ export default {
     OnIncreaseQuantityClick() {
       if (this.useStore) {
         this.$store.dispatch("increaseQuantity", this.item);
+        this.showModal = false;
         return;
       }
       // eslint-disable-next-line
-      ++this.item.quantity
+      ++this.item.quantity;
     },
 
-    OnDecreaseQuantityClick(){
-      if(this.useStore){
+    OnDecreaseQuantityClick() {
+      if (this.useStore) {
         this.$store.dispatch("decreaseQuantity", this.item);
-        return
+        if (this.item.quantity == 0) {
+          this.showModal = true;
+        }
+        return;
       }
       // eslint-disable-next-line
-      --this.item.quantity
+      --this.item.quantity;
     },
 
-    // OnIncreaseQuantityClick(){
-    //   console.log(this.mutableItem)
-    //   console.log(this.useStore)
-    //   console.log(this.item.quantity)
-    //   if(this.useStore){
-    //     this.increaseQuantity(this.item.id)
-    //     return
-    //   }
-    //   // ++this.mutableItem.quantity
-    // },
-
-    // OnDecreaseQuantityClick() {
-    //   if (this.useStore) {
-    //     this.decreaseQuantity(this.item.id);
-    //     return;
-    //   }
-
-    // --this.mutableItem.quantity
-    // },
+    deleteItem() {
+      this.$store.dispatch("deleteItem", this.item);
+      this.showModal = false;
+    },
   },
 };
 </script>
@@ -98,6 +107,17 @@ export default {
     color: @yellow;
     width: 28px;
     text-align: center;
+  }
+
+  .modal-remove {
+    text-align: center;
+    &--btn {
+      .primary-button {
+        padding: 5px 20px;
+        margin: 20px;
+        cursor: pointer;
+      }
+    }
   }
 
   @media @tablet {

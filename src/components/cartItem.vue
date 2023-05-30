@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <quantity :item="item" />
+    <quantity class="item--quantity" :item="item" />
     <div class="item--img-container">
       <div class="item--img">
         <img :src="imagePath" />
