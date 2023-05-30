@@ -12,14 +12,16 @@
         </div>
         <p>Observações:</p>
         <textarea
+          v-model="item.observation"
           class="add-cart--information-container-observations"
           rows="10"
         ></textarea>
       </div>
     </div>
 
-    <div class="add-cart--button" @click="addToCartBtn">Adicionar ao carrinho</div>
-
+    <div class="add-cart--button" @click="addToCartBtn">
+      Adicionar ao carrinho
+    </div>
   </div>
 </template>
 
@@ -54,14 +56,15 @@ export default {
       axios
         .get(`http://localhost:3000/${this.selectedCategory}/${this.id}`)
         .then((response) => {
-          this.item = { quantity: 1, ...response.data };
+          this.item = { quantity: 1, observation: '', ...response.data };
           this.loading = false;
         });
     },
 
-    addToCartBtn(){
+    addToCartBtn() {
+      console.log(this.item)
       this.$store.dispatch("addToCart", this.item);
-      this.$router.push({ name: 'home'})
+      this.$router.push({ name: "home" });
     },
   },
 

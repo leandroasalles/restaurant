@@ -15,11 +15,11 @@
     <Modal
       class="modal-remove"
       :show="showModal"
-      @modal-close="showModal = false">
+      @modal-close="cancelRemove()">
       <h2>Deseja remover o item do carrinho?</h2>
       <div class="modal-remove--btn">
-        <button class="primary-button" @click="deleteItem()">Sim</button>
-        <button class="primary-button" @click="OnIncreaseQuantityClick()">Não</button>
+        <button class="secundary-button" @click="cancelRemove()">Cancelar</button>
+        <button class="primary-button" @click="deleteItem()">Remover item</button>
       </div>
     </Modal>
   </div>
@@ -54,7 +54,6 @@ export default {
     OnIncreaseQuantityClick() {
       if (this.useStore) {
         this.$store.dispatch("increaseQuantity", this.item);
-        this.showModal = false;
         return;
       }
       // eslint-disable-next-line
@@ -77,6 +76,11 @@ export default {
       this.$store.dispatch("deleteItem", this.item);
       this.showModal = false;
     },
+
+    cancelRemove(){
+      this.showModal = false;
+      this.OnIncreaseQuantityClick()
+    }
   },
 };
 </script>
@@ -111,13 +115,7 @@ export default {
 
   .modal-remove {
     text-align: center;
-    &--btn {
-      .primary-button {
-        padding: 5px 20px;
-        margin: 20px;
-        cursor: pointer;
-      }
-    }
+
   }
 
   @media @tablet {

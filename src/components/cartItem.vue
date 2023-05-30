@@ -10,24 +10,52 @@
       <div class="item--name">
         {{ item.name }}
       </div>
-      <a class="item--observation">Adicionar observação</a>
+      <div class="item--observation-text">
+        {{ item.observation }}
+      </div>
+      <a class="item--observation" @click="addObservation()">Adicionar observação</a>
     </div>
     <div class="item--price">
       {{ item.price | currency }}
     </div>
+    <modal class="observation-modal" :show="showModal" @modal-close="showModal = false">
+      <h2>Adicionar observação</h2>
+      <textarea v-model="item.observation" rows="8"></textarea>
+      <button class="secundary-button" @click="cancelObservation()">Cancelar</button>
+      <button class="primary-button" @click="saveObservation()">Salvar observação</button>
+    </modal>
   </div>
 </template>
 
 <script>
 import quantity from "../components/quantity.vue";
+import modal from "./Modal.vue";
 
 export default {
   name: "cartItem",
+  data() {
+    return {
+      showModal: false,
+    };
+  },
   components: {
     quantity,
+    modal,
   },
   props: {
     item: {},
+  },
+  methods: {
+    addObservation() {
+      this.showModal = true;
+    },
+    cancelObservation() {
+      this.showModal = false;
+    },
+    saveObservation(){
+      this.$store.dispatch('saveObservation', this.item)
+      this.showModal = false;
+    },
   },
   computed: {
     imagePath() {
@@ -80,11 +108,18 @@ export default {
     font-size: 18px;
   }
 
+  &--observation-text {
+    font-weight: 500;
+    font-size: 12px;
+    color: @dark-grey;
+  }
+
   &--observation {
     font-weight: 500;
     font-size: 12px;
     color: @dark-grey;
     text-decoration: underline;
+    cursor: pointer;
   }
 
   &--price {
@@ -114,6 +149,15 @@ export default {
     &--price {
       order: 4;
       padding: 0 20px;
+    }
+  }
+
+  .observation-modal {
+    text-align: center;
+
+    textarea {
+      width: 100%;
+      resize: none;
     }
   }
 }
