@@ -1,6 +1,5 @@
 # 🍔 Delivery Website 
 <img src='https://img.shields.io/badge/Status-In%20improvement-green'>
-<br><br>
 
 ## 📋 Summary
 
@@ -33,7 +32,8 @@ After adding the products the user wants, it is possible to finalize the order, 
 ![Remove-modal](https://github.com/leandroasalles/restaurant/assets/88564927/c20c4ee2-ec7f-407a-805a-43806169e2e8)
 ![Address-modal](https://github.com/leandroasalles/restaurant/assets/88564927/2e4a3dc5-d074-4292-9270-03fe6a69b447)
 ![User-data](https://github.com/leandroasalles/restaurant/assets/88564927/676a915c-308a-4e8f-9182-f38ae40bb724)
-![Success-modal](https://github.com/leandroasalles/restaurant/assets/88564927/c503b478-4dfd-4a5f-8f47-1ebb5e6211a4)
+![Success-modal](https://github.com/leandroasalles/restaurant/assets/88564927/a2a556cc-eede-4f79-b79e-625076a9a234)
+
 
 <h2 id='Technologies'>💻 Technologies</h2>
 
