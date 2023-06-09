@@ -2,7 +2,11 @@
 <img src='https://img.shields.io/badge/Status-In%20improvement-green'>
 <br><br>
 <div>
+<<<<<<< HEAD
 <!-- <img style='width: 100%' src='./src/assets/images/logo.jpg'> -->
+=======
+<img style='width: 400px' src='./src/assets/images/logo.jpg'>
+>>>>>>> 23a255a451b8f427dfc7e2585bb9c3bd01e9cd6a
 </div>
 
 
