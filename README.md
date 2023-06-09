@@ -1,10 +1,4 @@
 # 🍔 Delivery Website 
-<img src='https://img.shields.io/badge/Status-In%20improvement-green'>
-<br><br>
-<div>
-<<<<<<< HEAD
-<!-- <img style='width: 100%' src='./src/assets/images/logo.jpg'> -->
-=======
 <img style='width: 400px' src='./src/assets/images/logo.jpg'>
 >>>>>>> 23a255a451b8f427dfc7e2585bb9c3bd01e9cd6a
 </div>
@@ -34,6 +28,7 @@ After adding the products the user wants, it is possible to finalize the order, 
 
 <h2 id='Layout'>📷 Layout</h2>
 
+[![Watch the video](https://www.youtube.com/watch?v=XJDrtDutMM4)
 
 <h2 id='Technologies'>💻 Technologies</h2>
 
