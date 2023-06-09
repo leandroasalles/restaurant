@@ -1,9 +1,7 @@
 <template>
   <div class="add-cart">
     <div class="add-cart--container">
-      <router-link class="add-cart--go-back" to="/" v-if="isSmallScreens()"
-        >Voltar</router-link
-      >
+      <router-link class="add-cart--go-back" to="/" v-if="isSmallScreens()">← Voltar</router-link>
       <item :item="item" />
       <div class="add-cart--information-container">
         <div class="add-cart--information-container-quantity">
@@ -14,14 +12,11 @@
         <textarea
           v-model="item.observation"
           class="add-cart--information-container-observations"
-          rows="10"
-        ></textarea>
+          rows="10"></textarea>
       </div>
     </div>
 
-    <div class="add-cart--button" @click="addToCartBtn">
-      Adicionar ao carrinho
-    </div>
+    <div class="add-cart--button" @click="addToCartBtn">Adicionar ao carrinho</div>
   </div>
 </template>
 
@@ -32,6 +27,7 @@ import mixin from "../mixins/mixin.js";
 import quantity from "../components/quantity.vue";
 
 export default {
+  name: "addToCart",
   data() {
     return {
       item: {},
@@ -53,16 +49,14 @@ export default {
     getItemsList() {
       this.loading = true;
 
-      axios
-        .get(`http://localhost:3000/${this.selectedCategory}/${this.id}`)
-        .then((response) => {
-          this.item = { quantity: 1, observation: '', ...response.data };
-          this.loading = false;
-        });
+      axios.get(`http://localhost:3000/${this.selectedCategory}/${this.id}`).then((response) => {
+        this.item = { quantity: 1, observation: "", ...response.data };
+        this.loading = false;
+      });
     },
 
     addToCartBtn() {
-      console.log(this.item)
+      console.log(this.item);
       this.$store.dispatch("addToCart", this.item);
       this.$router.push({ name: "home" });
     },
@@ -89,8 +83,12 @@ export default {
   padding: 50px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100vh;
+  max-height: 100vh;
+
+  &--container{
+    flex-grow: 1;
+  }
 
   &--go-back {
     font-size: 18px;
@@ -132,6 +130,8 @@ export default {
     border: 0;
     font-size: 16px;
     font-weight: 600;
+    width: 100%;
+ 
   }
 }
 </style>

@@ -8,10 +8,15 @@ body {
   margin: 0;
 }
 
+
+
+
+
 * {
   box-sizing: border-box;
-  overflow: hidden;
-}
+  overflow: hidden;}
+
+
 
 input,
 select,
@@ -40,3 +45,32 @@ textarea {
   margin: 20px;
   cursor: pointer;
 }
+
+.error{
+  color: red;
+  margin: 0;
+  font-size: 12px;
+}
+
+input {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid @light-grey;
+
+  &.error{
+    border: 1px solid red;
+    
+    &::placeholder{
+      color: red;
+    }
+  }
+}
+
+// input[type=text]{
+//   margin-bottom: 20px;
+// }
+
+label {
+  margin: 0 0 5px 0;
+}
+

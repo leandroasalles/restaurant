@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import home from '../views/homeView.vue'
 import cart from '../components/cartList.vue'
 import addToCart from '../components/addToCart.vue'
+import paymentView from '../views/paymentView'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     name: 'addToCart',
     component: addToCart,
     props: true
+  },
+  {
+    path: '/payment',
+    name: 'payment',
+    component: paymentView,
   },
 
 ]

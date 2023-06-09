@@ -77,7 +77,7 @@ export default {
   display: flex;
   align-items: center;
   border-bottom: solid 1px @light-grey;
-  padding: 20px 0;
+  padding: 20px 5px;
 
   &--img-container {
     width: 80px;
