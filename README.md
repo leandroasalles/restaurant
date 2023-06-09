@@ -1,7 +1,7 @@
 # 🍔 Delivery Website 
 
 <div>
-<img style='width: 100%' src='./src/assets/images/logo.jpg'>
+<img style='width: 400px' src='./src/assets/images/logo.jpg'>
 </div>
 
 ## 📋 Summary
