@@ -28,7 +28,11 @@ After adding the products the user wants, it is possible to finalize the order, 
 
 <h2 id='Layout'>📷 Layout</h2>
 
-[![Watch the video](https://www.youtube.com/watch?v=XJDrtDutMM4)
+![Items-List](https://github.com/leandroasalles/restaurant/assets/88564927/2ca8ec1b-4dfc-49f9-8b5e-f9d207e4d315)
+![Remove-modal](https://github.com/leandroasalles/restaurant/assets/88564927/c20c4ee2-ec7f-407a-805a-43806169e2e8)
+![Address-modal](https://github.com/leandroasalles/restaurant/assets/88564927/2e4a3dc5-d074-4292-9270-03fe6a69b447)
+![User-data](https://github.com/leandroasalles/restaurant/assets/88564927/676a915c-308a-4e8f-9182-f38ae40bb724)
+![Success-modal](https://github.com/leandroasalles/restaurant/assets/88564927/c503b478-4dfd-4a5f-8f47-1ebb5e6211a4)
 
 <h2 id='Technologies'>💻 Technologies</h2>
 
