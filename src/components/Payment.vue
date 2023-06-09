@@ -68,13 +68,23 @@
 
       <div class="form-field-radio">
         <div class="radio credit-card">
-          <input type="radio" name="paymentType" id="creditCard" value="Cartão de Crédito" v-model="paymentType"/>
-          <label for="store">Cartão de crédito</label>
+          <input
+            type="radio"
+            name="paymentType"
+            id="creditCard"
+            value="Cartão de Crédito"
+            v-model="paymentType" />
+          <label for="creditCard">Cartão de crédito</label>
         </div>
 
         <div class="radio money">
-          <input type="radio" name="paymentType" id="money" value="Dinheiro" v-model="paymentType" />
-          <label for="store">Dinheiro</label>
+          <input
+            type="radio"
+            name="paymentType"
+            id="money"
+            value="Dinheiro"
+            v-model="paymentType" />
+          <label for="money">Dinheiro</label>
         </div>
       </div>
     </form>
@@ -91,7 +101,8 @@
             :class="{ error: !this.formData.cep.valid }"
             @blur="formData.cep.isValid()"
             type="text"
-            v-model="formData.cep.value" />
+            v-model="formData.cep.value" 
+            v-mask="'#####-###'" />
           <p class="error" v-if="!this.formData.cep.valid">{{ formData.cep.error }}</p>
         </div>
 
@@ -230,7 +241,7 @@ export default {
       showSuccessModal: false,
       showAddressCard: false,
       deliveryType: "Retirar na loja",
-      paymentType: 'Cartão de Crédito',
+      paymentType: "Cartão de Crédito",
       addressValue: "",
       observationValue: this.$store.state.cartList.observation,
     };
@@ -267,7 +278,6 @@ export default {
     addressButton() {
       return this.hasAddressInfo && this.showAddressCard ? "Editar endereço" : "Adicionar endereço";
     },
-
   },
   methods: {
     triggerDataValidations() {
@@ -287,7 +297,7 @@ export default {
         return;
       }
 
-      if (this.deliveryType == "delivery" && !this.hasAddressInfo) {
+      if (this.deliveryType === "Delivery" && !this.hasAddressInfo) {
         this.showNoAddressModal = true;
         return;
       }
@@ -316,16 +326,8 @@ export default {
         %0A${this.formData.city.value} - ${this.formData.cep.value}`;
       }
     },
-    //  observationInfo() {
-    //    if (!this.observationValue.length) {
-    //      this.observationValue = "";
-    //      return;
-    //    }
-    //    this.observationValue = this.$store.state.cartList.observation
-    //  },
     sendOrder() {
-      this.addressInfo()
-      // console.log(this.$store.state.cartList.observation.id)
+      this.addressInfo();
       const storePhone = 5531996101036;
       let orderItems = `Cliente: ${this.formData.name.value} 
       %0AContato: ${this.formData.tel.value}
@@ -338,10 +340,9 @@ export default {
                 %0A
                 `;
       })}`;
-      
+
       window.open(`https://api.whatsapp.com/send?phone=${storePhone}&text=${orderItems}`);
     },
-
   },
 };
 </script>
