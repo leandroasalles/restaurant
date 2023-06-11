@@ -99,9 +99,9 @@
           <label for="">{{ formData.cep.label }}</label>
           <input
             :class="{ error: !this.formData.cep.valid }"
-            @blur="formData.cep.isValid()"
+            @blur="insertCep"
             type="text"
-            v-model="formData.cep.value" 
+            v-model="formData.cep.value"
             v-mask="'#####-###'" />
           <p class="error" v-if="!this.formData.cep.valid">{{ formData.cep.error }}</p>
         </div>
@@ -146,7 +146,7 @@
 
       <div class="address--modal-buttons">
         <button class="secundary-button" @click="cancelAddress()">Cancelar</button>
-        <button class="primary-button" @click="saveAddress()">Salvar observação</button>
+        <button class="primary-button" @click="saveAddress()">Salvar endereço</button>
       </div>
     </modal>
 
@@ -171,6 +171,7 @@
 <script>
 import modal from "./Modal.vue";
 import feather from "feather-icons";
+import axios from "axios";
 
 export default {
   name: "PaymentData",
@@ -201,7 +202,7 @@ export default {
           error: "O campo cep é obrigatório",
           valid: true,
           isValid: () => {
-            this.formData.cep.valid = !!this.formData.cep.value.length;
+            this.formData.cep.valid = this.formData.cep.value.length == 9;
           },
         },
         street: {
@@ -321,7 +322,7 @@ export default {
     },
     addressInfo() {
       if (this.hasAddressInfo) {
-        addressValue = `
+        this.addressValue = `
         %0AEndereço: ${this.formData.street.value} - ${this.formData.number.value}
         %0A${this.formData.city.value} - ${this.formData.cep.value}`;
       }
@@ -335,6 +336,9 @@ export default {
       %0A${this.deliveryType}
       %0A${this.addressValue}
       %0APedido:${this.$store.state.cartList.map((item) => {
+        if(item.observation == undefined){
+          item.observation = "sem observação"
+        }
         return `%0A${item.quantity}x ${item.name}
                 %0Aobs: ${item.observation}
                 %0A
@@ -343,6 +347,26 @@ export default {
 
       window.open(`https://api.whatsapp.com/send?phone=${storePhone}&text=${orderItems}`);
     },
+    async insertCep(){
+      this.formData.cep.isValid()
+
+      await axios.get(`https://viacep.com.br/ws/${this.formData.cep.value}/json/`).then((response) => {
+        if(response.data.erro == true){
+          this.formData.cep.value = ''
+          alert(`Número de CEP inválido`)
+          
+          return
+        }
+
+          this.formData.street.value = `${response.data.logradouro}, ${response.data.bairro}`
+          this.formData.city.value = `${response.data.localidade}, ${response.data.uf}`
+          
+
+        })
+        .catch(error => {
+          return
+        })
+    }
   },
 };
 </script>

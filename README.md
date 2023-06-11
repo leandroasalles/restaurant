@@ -24,6 +24,7 @@ After adding the products the user wants, it is possible to finalize the order, 
 - Select products, add to cart and remove from cart
 - Increase and Decrease products quantities
 - User data, Delivery and Payment type form
+- Zip Code API for autocompletion
 - Warning and Success modal
 - Send order to whatsapp number
 

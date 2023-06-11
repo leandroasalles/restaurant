@@ -4,7 +4,7 @@
       <loading />
     </div>
     <div class="items-list--items" v-else>
-      <itemUnit v-for="item in itemsList" :key="item.id" :item="item"/>
+      <itemUnit v-for="item in itemsList" :key="item.id" :item="item" />
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
 import axios from "axios";
 import itemUnit from "./itemUnit.vue";
-import loading from "./loadingPage.vue"
+import loading from "./loadingPage.vue";
 
 export default {
   name: "itemsList",
@@ -27,21 +27,18 @@ export default {
     };
   },
   created() {
-    this.getItemsList()
+    this.getItemsList();
   },
 
   methods: {
     getItemsList() {
-      this.loading = true
+      this.loading = true;
       setTimeout(() => {
-
-        axios
-          .get(`http://localhost:3000/${this.selectedCategory}`)
-          .then((response) => {
-            this.itemsList = response.data;
-            this.loading = false
-          });
-      },1000)
+        axios.get(`http://localhost:3000/${this.selectedCategory}`).then((response) => {
+          this.itemsList = response.data;
+          this.loading = false;
+        });
+      }, 1000);
     },
   },
 
@@ -67,8 +64,7 @@ export default {
   display: flex;
   flex-direction: column;
 
-  &--loading{
-    
+  &--loading {
     margin: auto;
   }
 
@@ -83,8 +79,6 @@ export default {
       margin: 20px;
       width: unset;
     }
-
-
   }
 }
 </style>
